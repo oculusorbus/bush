@@ -9,11 +9,12 @@
   --ink: #0E1B2E;
   --ink-2: #1B2A44;
   --muted: #5B6478;
-  --gold: #C9A86A;
-  --gold-2: #B08F4F;
+  --gold: #C9A86A;             /* brand gold — decorative + text on dark bg only */
+  --gold-2: #7F6A43;           /* AA-compliant bronze gold — text on light bg (4.5:1 on cream) */
   --bush-red: #A02013;
   --bush-red-2: #851A0F;
-  --line: #E5E1D6;
+  --line: #A89F86;             /* warm taupe — decorative borders (~2.5:1 on cream) */
+  --line-strong: #998F73;      /* AA UI border (3:1) — for form fields & focus states */
 
   --shadow-sm: 0 2px 8px rgba(14, 27, 46, 0.06);
   --shadow-md: 0 8px 24px rgba(14, 27, 46, 0.08);
@@ -730,10 +731,11 @@ h1, h2, h3, h4 {
   content: "";
   width: 4px; height: 4px;
   border-radius: 50%;
-  background: var(--gold);
+  background: var(--gold-2);
   margin-top: 8px;
   flex-shrink: 0;
 }
+.service-card:hover li::before { background: var(--gold); }
 .service-card .learn-more {
   display: inline-flex;
   align-items: center;
@@ -820,7 +822,7 @@ h1, h2, h3, h4 {
   border: 1px solid var(--line);
   padding: 28px;
 }
-.tcard .quote-mark { color: var(--gold); width: 22px; height: 22px; opacity: 0.9; }
+.tcard .quote-mark { color: var(--gold-2); width: 22px; height: 22px; opacity: 1; }
 .tcard blockquote {
   font-family: var(--font-display);
   font-size: 1.15rem;
@@ -1357,7 +1359,7 @@ h1, h2, h3, h4 {
 .field-textarea {
   width: 100%;
   background: var(--bg);
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong);
   border-radius: 12px;
   padding: 12px 16px;
   font-size: 0.95rem;
@@ -1370,8 +1372,24 @@ h1, h2, h3, h4 {
 .field-select:focus,
 .field-textarea:focus {
   outline: none;
-  border-color: var(--gold-2);
-  box-shadow: 0 0 0 3px rgba(201, 168, 106, 0.18);
+  border-color: var(--ink);
+  box-shadow: 0 0 0 3px rgba(14, 27, 46, 0.18);
+}
+
+/* Visible keyboard focus for all interactive elements (WCAG 2.4.7) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.btn:focus-visible,
+.nav-cta:focus-visible {
+  outline-offset: 4px;
 }
 .form-disclaimer {
   font-size: 0.78rem;
