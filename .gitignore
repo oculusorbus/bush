@@ -1,1 +1,8 @@
 .DS_Store
+
+# Original Wix export — kept locally for reference, not tracked in git.
+# Wix bundles include third-party JS with embedded vendor API keys, which
+# tripped GitHub's secret scanner. The export remains on disk; we just
+# don't ship it through the repo.
+Wix/
+
